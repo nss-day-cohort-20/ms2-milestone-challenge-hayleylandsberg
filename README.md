@@ -67,7 +67,8 @@ Remember to design your system first. Modularity. Single Responsiblity. Once you
 ```js
 // This IIFE will add a new module to Carlot in the
 // namespace of CarLot.Inventory
-var CarLot = (function (globalScopeCarLot) {
+  
+  var CarLot = (function (globalScopeCarLot) {
 
   // Define a private scope variable to store cars
   let _car_inventory = [];  
@@ -75,12 +76,13 @@ var CarLot = (function (globalScopeCarLot) {
   // Start building the Object that will be attached
   // to the CarLot.Inventory namespace
   let inventory = Object.create(null, {
-    loadInventory: function (callback) {
-      var load = new XMLHttpRequest();
-
-      inventoryLoader.addEventListener("load", function () {
+    loadInventory: {
+      value: function (callback) {
+        var inventoryLoader = new XMLHttpRequest();
+        inventoryLoader.addEventListener("load", function () {
         // Add each car to the private _car_inventory array
-      });
+        });
+      }
     }
   });
 
